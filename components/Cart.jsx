@@ -82,7 +82,7 @@ const Cart = () => {
                     <div>
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <h3>
-                          <a>{item.name}</a>
+                          <p>{item.name}</p>
                         </h3>
                         <p className="ml-4">{item.price} da</p>
                       </div>
@@ -134,13 +134,12 @@ const Cart = () => {
               <p>{totalPrice} da</p>
             </div>
             <Link href="/checkout" className="mt-6">
-              <a
-                href="#"
+              <p
                 className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                 onClick={() => setShowCart(false)}
               >
                 Checkout
-              </a>
+              </p>
             </Link>
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>

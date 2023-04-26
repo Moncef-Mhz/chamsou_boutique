@@ -14,13 +14,13 @@ function AdminLoged() {
       setdata(getdata);
     });
   }, []);
-  console.log(data);
   return (
     <div>
       <h1 className="text-black/80 text-4xl font-bold mb-2">Orders</h1>
       <div className="flex flex-col gap-4 ">
         {data?.map((item) => (
           <div className="md:w-[70%] w-full rounded-md p-3 border shadow-xl flex justify-between items-start flex-wrap gap-4 cursor-pointer">
+            {console.log(item.cartItems.map((e) => e._id))}
             <div
               className="  flex flex-col items-start justify-between  "
               key={item}

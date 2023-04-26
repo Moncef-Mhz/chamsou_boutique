@@ -41,7 +41,7 @@ const ProductDetails = ({ product, products }) => {
           <div className="image-container">
             <img
               src={urlFor(image && image[index])}
-              className="product-detail-image rounded-xl sm:w-[400px] sm:h-[400px] w-[350px] h-[350px]"
+              className="product-detail-image rounded-xl sm:w-[400px] sm:h-[400px] w-[350px] h-[350px] object-cover"
             />
           </div>
           <div className="small-images-container">
@@ -51,8 +51,8 @@ const ProductDetails = ({ product, products }) => {
                 src={urlFor(item)}
                 className={
                   i === index
-                    ? "w-20  sm:w-[93px] h-20 sm:h-[93px] selected-image rounded-xl"
-                    : "w-20  sm:w-[93px] h-20 sm:h-[93px] rounded-xl"
+                    ? "w-20  sm:w-[93px] h-20 sm:h-[93px] object-cover selected-image rounded-xl"
+                    : "w-20  sm:w-[93px] h-20 sm:h-[93px] object-cover rounded-xl"
                 }
                 onMouseEnter={() => setIndex(i)}
               />
