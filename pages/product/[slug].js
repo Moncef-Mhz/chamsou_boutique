@@ -19,7 +19,6 @@ const ProductDetails = ({ product, products }) => {
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
   const handleBuyNow = () => {
     onAdd(product, qty, Size, Color);
-    console.log(Size);
 
     setShowCart(true);
   };

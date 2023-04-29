@@ -128,8 +128,8 @@ const Cart = () => {
             : null}
         </div>
         {cartItems.length >= 1 && (
-          <div className="border-t border-gray-200 px-4 py-6 sm:px-6 bottom-0 absolute w-full left-0">
-            <div className="flex justify-between text-base font-medium text-gray-900 mb-2">
+          <div className="border-t border-gray-200 px-4 py-4 sm:px-6 bottom-0 absolute w-full left-0 bg-white">
+            <div className="flex justify-between text-lg font-medium text-gray-900 mb-2">
               <p>Subtotal</p>
               <p>{totalPrice} da</p>
             </div>

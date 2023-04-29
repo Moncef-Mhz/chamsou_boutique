@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useStateContext } from "/context/StateContext";
 import Link from "next/link";
 import { urlFor } from "/lib/client";
+import { AiOutlineDelete } from "react-icons/ai";
 import toast from "react-hot-toast";
 
 import { collection, addDoc } from "firebase/firestore";
@@ -24,7 +25,6 @@ function Checkout() {
   const [PhoneNumber, setPhoneNumber] = useState("");
   const collectionRef = collection(db, "orders");
   const handlesubmit = (e) => {
-    // const adress = [name, name, lastName, PhoneNumber];
     e.preventDefault();
     addDoc(collectionRef, {
       name: name,
@@ -64,12 +64,12 @@ function Checkout() {
                   <td>
                     <Link href={`/product/${item.slug.current}`}>
                       <div className="flex items-center cursor-pointer">
-                        <img
+                        {/* <img
                           src={urlFor(item.image && item.image[0])}
                           width={50}
                           height={50}
-                          className="product-image"
-                        />
+                          className="product-image w-[100px] h-[100px] object-cover"
+                        /> */}
                         {item.name}
                       </div>
                     </Link>
@@ -79,8 +79,11 @@ function Checkout() {
                   <td className="p-5 text-right">
                     {item.quantity * item.price} da
                   </td>
-                  <td className="p-5 text-right" onClick={() => onRemove(item)}>
-                    delete
+                  <td
+                    className="p-5 text-right cursor-pointer"
+                    onClick={() => onRemove(item)}
+                  >
+                    <AiOutlineDelete size={24} />
                   </td>
                 </tr>
               ))}
