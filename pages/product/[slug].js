@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 
 import { client, urlFor } from "../../lib/client";
-import { Product } from "../../components";
+import VanillaTilt from "vanilla-tilt";
 import { useStateContext } from "../../context/StateContext";
 import { toast } from "react-hot-toast";
 
@@ -17,11 +17,7 @@ const ProductDetails = ({ product, products }) => {
   const [Size, setSize] = useState("");
   const [Color, setColor] = useState("");
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
-  const handleBuyNow = () => {
-    onAdd(product, qty, Size, Color);
 
-    setShowCart(true);
-  };
   const handlesubmit = () => {
     if (!Size) {
       toast.error("please Select a Size!");
@@ -33,14 +29,23 @@ const ProductDetails = ({ product, products }) => {
     }
   };
 
+  useEffect(() => {
+    VanillaTilt.init(document.querySelectorAll(".car"), {
+      max: 5,
+      speed: 10,
+      glare: true,
+      "max-glare": 0.5,
+    });
+  }, []);
+
   return (
     <div>
       <div className="flex mt-10 items-start justify-center w-full flex-col md:flex-row ">
         <div className="w-full flex flex-col items-center">
-          <div className="image-container">
+          <div className="image-container car">
             <img
               src={urlFor(image && image[index])}
-              className="product-detail-image rounded-xl sm:w-[400px] sm:h-[400px] w-[350px] h-[350px] object-cover"
+              className="product-detail-image rounded-xl sm:w-[400px] sm:h-[400px] w-[350px] h-[350px] object-cover "
             />
           </div>
           <div className="small-images-container">
@@ -50,8 +55,8 @@ const ProductDetails = ({ product, products }) => {
                 src={urlFor(item)}
                 className={
                   i === index
-                    ? "w-20  sm:w-[93px] h-20 sm:h-[93px] object-cover selected-image rounded-xl"
-                    : "w-20  sm:w-[93px] h-20 sm:h-[93px] object-cover rounded-xl"
+                    ? "w-20  sm:w-[93px] h-20 sm:h-[93px] car object-cover selected-image rounded-xl"
+                    : "w-20  sm:w-[93px] h-20 sm:h-[93px] object-cover rounded-xl car"
                 }
                 onMouseEnter={() => setIndex(i)}
               />

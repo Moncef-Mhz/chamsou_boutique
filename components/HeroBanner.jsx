@@ -1,12 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import { GrLinkNext } from "react-icons/gr";
-
+import { motion } from "framer-motion";
 import { urlFor } from "../lib/client";
 
 const HeroBanner = ({ heroBanner }) => {
   return (
-    <div className="w-full h-[500px] relative">
+    <motion.div
+      className="w-full h-[500px] relative"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <div className="w-full h-[500px] ">
         <img
           src={urlFor(heroBanner.image)}
@@ -25,7 +29,7 @@ const HeroBanner = ({ heroBanner }) => {
           <p className="text-white">{heroBanner.desc}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
     // <div className="hero-banner-container">
     //   <div>
     //     <p className="beats-solo">{heroBann`er.smallText}</p>

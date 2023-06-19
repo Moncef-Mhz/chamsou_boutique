@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { useStateContext } from "/context/StateContext";
+import VanillaTilt from "vanilla-tilt";
 
 import { urlFor } from "../lib/client";
 
-function Product({ product: { image, name, slug, price }, product }) {
+function Product({ product: { image, name, slug, price }, product, sel }) {
   const cartRef = useRef();
 
   const {
@@ -17,37 +18,21 @@ function Product({ product: { image, name, slug, price }, product }) {
     toggleCartItemQuanitity,
     onRemove,
   } = useStateContext();
+  useEffect(() => {
+    VanillaTilt.init(document.querySelectorAll(".car"), {
+      max: 5,
+      speed: 10,
+      glare: false,
+      "max-glare": 0.5,
+    });
+  }, []);
   return (
-    // <div className="">
-    //   <Link className="" href={`/product/${slug.current}`}>
-    //     <div className="group">
-    //       <div className="  w-full overflow-hidden rounded-lg bg-gray-200 cursor-pointer ">
-    //         <img
-    //           src={urlFor(image && image[0])}
-    //           alt={name}
-    //           className="h-full w-full object-cover object-center group-hover:opacity-75"
-    //         />
-    //       </div>
-    //       <div className="flex items-center justify-between mt-2">
-    //         <h3 className=" text-md font-semibold  text-gray-700">{name}</h3>
-    //         <p className=" text-lg font-medium text-gray-900">{price} da</p>
-    //       </div>
-    //     </div>
-    //   </Link>
-    //   <button
-    //     className=" px-8 font-semibold hover:border-[#919191] duration-200 py-[5px] border-[2px] rounded-full mt-2 border-[#0a0a0a]  hover:text-[#919191]"
-    //     onClick={() => onAdd(product, qty)}
-    //   >
-    //     Add to cart
-    //   </button>
-    // </div>
-    // <div>
-    <div className="relative">
+    <div className={`relative car`}>
       <Link href={`/product/${slug.current}`}>
-        <div className="w-[300px] relative group hover:scale-[1.05] duration-200 card shadow-lg">
+        <div className="w-[300px] relative group hover:scale-[1.05] duration-200 card shadow-lg rounded-md car">
           <img
             src={urlFor(image && image[0])}
-            className="w-[300px] h-[300px] object-cover rounded-sm"
+            className="w-[300px] h-[300px] object-cover rounded-t-md"
           />
           <div className=" flex justify-between p-2">
             <h5 className="text-black text-xl font-bold">{name}</h5>

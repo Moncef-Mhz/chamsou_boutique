@@ -29,7 +29,9 @@ function AdminLoged() {
     }));
     setdata(order);
   };
-  datas();
+  useEffect(() => {
+    datas();
+  }, []);
   // console.log(getDoc(collectionRef, "xqnvYGCgR1q080aWBVH1"));
   const handledelete = async (item) => {
     deleteDoc(doc(db, "orders", item.id));
@@ -96,7 +98,7 @@ function AdminLoged() {
                 ))}
               </div>
               <div
-                className=" rounded-full p-1  absolute top-0 right-0 m-1"
+                className=" rounded-full p-1  absolute top-0 right-0 m-1 z-10"
                 onClick={() => handledelete(item)}
               >
                 <AiOutlineClose size={20} />

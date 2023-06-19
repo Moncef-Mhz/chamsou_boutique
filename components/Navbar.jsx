@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
-
+import { motion } from "framer-motion";
 import { Cart } from "./";
 import { useStateContext } from "../context/StateContext";
 
@@ -9,7 +9,11 @@ const Navbar = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
 
   return (
-    <div className="flex justify-between items-center px-[6px] py-[18px] mb-2   ">
+    <motion.div
+      className="flex justify-between items-center px-[6px] py-[18px] mb-2   "
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+    >
       <p className="logo">
         <Link href="/">Boutique chamsou</Link>
       </p>
@@ -24,7 +28,7 @@ const Navbar = () => {
       </button>
 
       {showCart && <Cart />}
-    </div>
+    </motion.div>
   );
 };
 

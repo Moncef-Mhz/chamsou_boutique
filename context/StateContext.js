@@ -101,7 +101,6 @@ export const StateContext = ({ children }) => {
       return prevQty - 1;
     });
   };
-  console.log(cartItems);
   return (
     <Context.Provider
       value={{

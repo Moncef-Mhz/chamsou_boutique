@@ -24,13 +24,12 @@ const Cart = () => {
     toggleCartItemQuanitity,
     onRemove,
   } = useStateContext();
-  // console.log(Size);
-  const handleCheckout = () => {
-    setShowCart(false);
-    // if (response.statusCode === 500) return;
+  // const handleCheckout = () => {
+  //   setShowCart(false);
+  //   // if (response.statusCode === 500) return;
 
-    // const data = await response.json();
-  };
+  //   // const data = await response.json();
+  // };
 
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -87,7 +86,7 @@ const Cart = () => {
                         <p className="ml-4">{item.price} da</p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500 capitalize">
-                        {Size} -- {Color}
+                        {item.orederSize} -- {item.orderColor}
                       </p>
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
